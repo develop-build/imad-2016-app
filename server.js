@@ -5,8 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-
-var articleOne = {
+var articles = {
+    'article-one' : {
     title:'Article One | Anubhav',
     heading:'Article One',
     date : 'Sep 5 2016',
@@ -19,6 +19,23 @@ var articleOne = {
                 <p>
                     This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.This content to first article.
                 </p>`
+},
+    'article-two' :{
+        title:'Article One | Anubhav',
+        heading:'Article One',
+        date : 'Sep 5 2016',
+        content :`<p>
+                    This content to second article.This content to second article..
+                </p>`
+    },
+    'article-three':{
+        title:'Article Three | Anubhav',
+        heading:'Article Three',
+        date : 'Sep 12 2016',
+        content :`<p>
+                    This content to third article.This content to third article..
+                </p>`
+    }
 };
 function createTemplate(data){
     var title = data.title;
@@ -60,17 +77,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-   res.send(createTemplate(articleOne)); 
+app.get('/:articleName',function(req,res){
+   res.send(createTemplate(articles[articleName])); 
 });
 
-app.get('/article-two',function(req,res){
-   res.sendFile(path.join(__dirname, 'ui', 'article-two.html')); 
-});
-
-app.get('/article-three',function(req,res){
-   res.sendFile(path.join(__dirname, 'ui', 'article-three.html')); 
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
