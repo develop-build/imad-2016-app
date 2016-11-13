@@ -1,13 +1,14 @@
-console.log('Loaded!');
+//Counter Code
 
-
-//move the image
-var marginLeft = 0;
-var image = document.getElementById('image');
-function moveRight(){
-    marginLeft = marginLeft + 1;
-    image.style.marginLeft = marginLeft+'px';
+var button = document.getElementById('counter');
+var counter = 0;
+button.click=function(){
+    //make request to counter endpoint
+    
+    //capture response to counter endpoint
+    
+    //render the value in correct span
+    counter = counter + 1;
+    var span = document.getElementById('count');
+    span.innerHTML = counter.toString();
 }
-image.onclick = function(){
-  var interval = setInterval(moveRight,50) ;
-};
