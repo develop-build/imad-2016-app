@@ -78,12 +78,21 @@ app.get('/', function (req, res) {
 });
 
 var counter = 0;
-app.get('/counter', function(req ,res){
+app.get('/counter', function(req, res){
    counter = counter+1;
    res.send(counter.toString()) ;
 });
 
-app.get('/:articleName',function(req,res){
+var names = [];
+app.get('/submit-name/:name', function(req, res){
+   //get name from request
+   var name = req.params.name; 
+   names = names.push(name);
+   //using json to convert the JS object(an array) to HTML string
+   res.send(JSON.stingify(names));
+});
+
+app.get('/:articleName',function(req, res){
     var articleName = req.params.articleName;
     res.send(createTemplate(articles[articleName]));
 });
