@@ -87,7 +87,7 @@ var names = [];
 app.get('/submit-name/:name', function(req, res){
    //get name from request
    var name = req.params.name; 
-   names = names.push(name);
+   names.push(name);
    //using json to convert the JS object(an array) to HTML string
    res.send(JSON.stingify(names));
 });
