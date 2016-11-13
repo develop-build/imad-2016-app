@@ -89,7 +89,7 @@ app.get('/submit-name/:name', function(req, res){
    var name = req.params.name; 
    names.push(name);
    //using json to convert the JS object(an array) to HTML string
-   res.send(JSON.stingify(names));
+   res.send(JSON.stringify(names));
 });
 
 app.get('/:articleName',function(req, res){
