@@ -56,6 +56,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+//create password hash using pbkf2 algo
 function hash(input, salt){
     //using default library crypto used for adding a salt and generating the hashed string
     //using password based key derivation funtion in crypto library
