@@ -61,8 +61,6 @@ function hash(input, salt){
     //using password based key derivation funtion in crypto library
     var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
     return ["pbkdf2","10000", salt, hashed.toString('hex')].join('$');
-
-
 }
 
 app.get('/hash/:input', function(req, res){
@@ -70,9 +68,6 @@ app.get('/hash/:input', function(req, res){
     res.send(hashedString);
 });
 
-app.get('/create-user', function(req, res){
-    
-});
 
 var pool = new Pool(config);
 app.get('/test-db',function(req, res){
@@ -111,8 +106,7 @@ app.get('/articles/:articleName',function(req,res){
     if(result.rows.length===0){
         res.status(404).send('Article Not found');
 
-    }else
-    {
+    }else{
         var articleData = result.rows[0];
         res.send(createTemplate(articleData));
     }
